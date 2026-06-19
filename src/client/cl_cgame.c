@@ -638,6 +638,11 @@ static qboolean CL_CG_GetValue( char* value, int valueSize, const char* key ) {
 		return qtrue;
 	}
 
+	if ( !Q_stricmp( key, "trap_CmdBackup_Ext_Legacy" ) || !Q_stricmp( key, "trap_CmdBackup_Ext_ETE" ) ) {
+		Com_sprintf( value, valueSize, "%i", CG_CMDBACKUP_EXT );
+		return qtrue;
+	}
+
 	// UTF-8 not yet supported
 	if ( !Q_stricmp( key, "cap_UTF8" ) ) {
 		Com_sprintf( value, valueSize, "%i", 0 );
@@ -681,11 +686,6 @@ static qboolean CL_CG_GetValue( char* value, int valueSize, const char* key ) {
 
 	if ( !Q_stricmp( key, "CVAR_DEVELOPER_ETE" ) ) {
 		Com_sprintf( value, valueSize, "%i", CVAR_DEVELOPER );
-		return qtrue;
-	}
-
-	if ( !Q_stricmp( key, "trap_CmdBackup_Ext_Legacy" ) ) {
-		Com_sprintf( value, valueSize, "%i", CG_CMDBACKUP_EXT );
 		return qtrue;
 	}
 
